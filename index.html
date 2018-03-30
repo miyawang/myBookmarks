@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的导航</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="javascript" href="main.js">
+</head>
+<body>
+    <header></header>
+   
+    <main>
+        <div class="wrapper" id="kbds"></div>
+
+    </main>
+    <footer></footer>  
+    <script>
+        keys = {
+            '0':['q','w','e','r','t','y','u','i','o','p'],
+            '1':['a','s','d','f','g','h','j','k','l'],
+            '2':['z','x','c','v','b','n','m'],
+            'length': 3
+        }
+        hash = { q:'qq.com', w:'weibo.com', e:'eleme.com', r:'renren.com',
+            t:'taobao.com', y:'youku.com', u:'uc.com', i:'iqiyi.com',
+            o:'opera.com', p:undefined, a:'aliyun.com', s:'soho.com',
+            m:'mozilla.com'
+        }
+        hashInlocalStorage = JSON.parse(getItem('lll') || 'null');
+        if(hashInlocalStorage){
+            hash = hashInlocalStorage;
+        }
+        index = 0;
+        while(index < keys.length){
+            div1 = document.createElement('div');
+            kbds.appendChild(div1);
+            row = keys[index];
+            console.log(row);
+            index2 = 0;
+            while(index2 < row.length){           
+            kbd = document.createElement('kbd');
+            kbd.textContent = row[index2];
+            button1 = document.createElement('button');
+            button1.textContent = '编辑';
+            button1.id = row[index2];
+            button1.onclick = function(abc){
+                key = abc['target']['id']
+                // console.log(abc['target']['id']);
+                x = prompt('请输入一个网址');
+                hash[key] = x;
+                localStorage.setItem('lll',JSON.stringify(hash));
+                console.log(hash);
+                
+            }
+            kbd.appendChild(button1);
+            div1.appendChild(kbd);
+            index2 = index2 +1;
+            }
+            index = index + 1;
+        }
+        document.onkeypress = function(abc){
+            // console.log('输入了一个键');
+            // console.log('你按的是：');
+            key = abc['key'];
+            website = hash[key];
+            console.log(website);
+            // location.href = 'http://' + website;
+            window.open('http://' + website, '_blank');
+            
+        } 
+    </script> 
+</body>
+</html>
