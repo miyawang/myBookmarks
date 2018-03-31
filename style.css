@@ -5,13 +5,51 @@
 a {
     text-decoration: none;
 }
-kbd {
+/* kbd {
     border: 1px solid red;
     width: 4em;
     height: 4em;
     display: inline-block;
     text-transform: uppercase;
     position: relative;
+} */
+body {
+   background: #eee url(images/mini.jpg) no-repeat center center;
+   background-size: cover;
+}
+main {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.key {
+    width: 60px;
+    height: 40px;
+    background: linear-gradient(to bottom, #171717 1%,#414141 100%);
+    color: #e0e0e0;
+    border: 1px solid #373737;
+    border-radius: 10%;
+    box-shadow:0 0 0 2px #131313, 0 0 0 2px #080808, 0 3px 0 2px #030303;
+    display: inline-flex;
+    /* align-items: center;
+    justify-content: center; */
+    text-transform: uppercase;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+
+}
+.wrapper {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+}
+.row {
+    margin: 15px;
+}
+.row .key {
+    margin: 0 8px;
 }
 kbd > button {
     position: absolute;
@@ -22,9 +60,7 @@ kbd > button {
 kbd:hover > button {
     display: inline-block;
 }
-main {
-    text-align: center;
-}
+
 #kbds {
     display: inline-block;
 }
@@ -32,5 +68,17 @@ main {
     margin-left: 2em;
 }
 #kbds > div:nth-child(3) {
-    margin-left: 4em;
+    margin-left: 2em;
+}
+.key img {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 4px;
+    bottom: 2px;
+}
+.key .text {
+    position: absolute;
+    top: 2px;
+    left: 4px;
 }
